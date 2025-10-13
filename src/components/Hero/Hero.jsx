@@ -41,7 +41,7 @@ const Hero = ({ onHoverEnter, onHoverLeave }) => {
           style={{ position: 'relative', zIndex: 3, color: '#fff' }}
           onMouseEnter={onHoverEnter}
           onMouseLeave={onHoverLeave}
-        >Ojas Chatur</motion.h1>
+        >Ojas Chatur!</motion.h1>
     </motion.section>
   )
 }
