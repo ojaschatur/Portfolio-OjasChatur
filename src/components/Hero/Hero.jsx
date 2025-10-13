@@ -2,6 +2,7 @@ import React from 'react'
 import './hero.css'
 import heroImg from "../../assets/love.png"
 import { motion } from 'framer-motion'
+import StarBackground from './StarBackground'
 
 const container = {
   hidden: {},
@@ -21,13 +22,16 @@ const item = {
 // accept handlers from parent to trigger cursor variant
 const Hero = ({ onHoverEnter, onHoverLeave }) => {
   return (
-    <motion.section className='hero' variants={container} initial="hidden" animate="visible">
+    <motion.section className='hero' variants={container} initial="hidden" animate="visible" style={{ position: 'relative' }}>
+        {/* canvas background */}
+        <StarBackground />
+
         <motion.img 
             className="heroImg" 
             src={heroImg} alt="Hero" 
             variants={item}
             transition={{duration: 0.6}}
-            style={{ position: 'relative', zIndex: 1 }}
+            style={{ position: 'relative', zIndex: 2 }}
             onMouseEnter={onHoverEnter}
             onMouseLeave={onHoverLeave}
             />
