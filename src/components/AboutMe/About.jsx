@@ -19,7 +19,7 @@ const imageParallax = [
   { x: 30, y: 30 },
 ];
 
-const About = () => {
+const About = ({ onHoverEnter, onHoverLeave }) => {
   const containerRef = useRef(null);
   const [mouse, setMouse] = useState({ x: 0.5, y: 0.5 });
 
@@ -43,6 +43,8 @@ const About = () => {
               y: (mouse.y - 0.5) * 15,
             }}
             transition={{ type: "spring", stiffness: 80, damping: 20 }}
+            onMouseEnter={onHoverEnter}
+            onMouseLeave={onHoverLeave}
           >
             <span>About</span> Me
           </motion.div>
@@ -76,6 +78,19 @@ const About = () => {
             />
           ))}
         </div>
+
+        <motion.div className="tech-stack-container" animate={{
+              x: (mouse.x - 0.5) * 25,
+              y: (mouse.y - 0.5) * 13,
+            }}
+            transition={{ type: "spring", stiffness: 80, damping: 20 }}>
+          <i className="devicon-go-original-wordmark colored"></i>
+          <i className="devicon-react-original colored"></i>
+          <i className="devicon-nodejs-plain colored"></i>
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" alt="C++" />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript" />
+        </motion.div>
       </div>
     </section>
   );

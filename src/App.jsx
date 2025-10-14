@@ -20,14 +20,16 @@ function App() {
 
   useEffect(() => {
     const onMouseMove = (e) => {
-      // subtract half the cursor size so the element is centered on the pointer
-      x.set(e.clientX - cursorSize / 2)
-      y.set(e.clientY - cursorSize / 2)
+      // Determine current cursor size based on variant
+      let size = cursorSize;
+      if (cursorVariant === 'text') size = 150;
+      x.set(e.clientX - size / 2);
+      y.set(e.clientY - size / 2);
     }
 
     window.addEventListener('mousemove', onMouseMove)
     return () => window.removeEventListener('mousemove', onMouseMove)
-  }, [x, y])
+  }, [x, y, cursorVariant])
 
   const variants = {
     default: {
@@ -58,7 +60,7 @@ function App() {
       </header>
       <main>
         <Hero onHoverEnter={textEnter} onHoverLeave={textLeave} />
-        <About/>
+        <About onHoverEnter={textEnter} onHoverLeave={textLeave} />
         <section>Project1</section>
         <section>Project2</section>
         <section>Project3</section>
