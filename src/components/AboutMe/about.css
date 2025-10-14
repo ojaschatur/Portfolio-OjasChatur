@@ -17,6 +17,7 @@
 
 .bgtext {
     font-size: 5rem;
+    font-weight: bold;
 }
 
 .bgtext span {
@@ -31,6 +32,7 @@
 
 .about-content span {
     color: #7b76ff;
+    font-weight: bold
 }
 
 .imgs img {
@@ -73,7 +75,6 @@
   top: 22%;
   left: 70%;
   rotate: 20deg;
-  
 }
 
 .imgs .img4 {
