@@ -7,3 +7,87 @@
   position: relative;
   scroll-snap-align: center;
 }
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.bgtext {
+    font-size: 5rem;
+}
+
+.bgtext span {
+    color: #7b76ff;
+}
+
+.about-content {
+    width: 50%;
+    font-size: 1.7rem;
+    letter-spacing: 1px;
+}
+
+.about-content span {
+    color: #7b76ff;
+}
+
+.imgs img {
+    position: absolute;
+}
+
+.imgs .img1,
+.imgs .img2 {
+  filter: blur(0px);
+  width: 300px;
+  z-index: 30;
+}
+
+.imgs .img3,
+.imgs .img4 {
+  filter: blur(2px);
+  width: 250px;
+  z-index: 20;
+}
+
+.imgs .img5,
+.imgs .img6 {
+  filter: blur(4px);
+  width: 200px;
+  z-index: 10;
+}
+
+.imgs .img1 {
+  top: 10%;
+  left: 10%;
+}
+
+.imgs .img2 {
+  top: 60%;
+  left: 75%;
+  rotate: 10deg;
+}
+
+.imgs .img3 {
+  top: 22%;
+  left: 70%;
+  rotate: 20deg;
+  
+}
+
+.imgs .img4 {
+  bottom: 15%;
+  left: 5%;
+}
+
+.imgs .img5 {
+  top: 5%;
+  left: 57%;
+}
+
+.imgs .img6 {
+  top: 75%;
+  left: 35%;
+  rotate: -20deg;
+}
