@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import Navbar from './components/navbar/Navbar'
 import Hero from './components/Hero/Hero'
+import About from "./components/AboutMe/About"
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 
 function App() {
@@ -57,7 +58,7 @@ function App() {
       </header>
       <main>
         <Hero onHoverEnter={textEnter} onHoverLeave={textLeave} />
-        <section>Services</section>
+        <About/>
         <section>Project1</section>
         <section>Project2</section>
         <section>Project3</section>

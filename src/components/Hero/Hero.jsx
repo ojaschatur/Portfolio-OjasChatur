@@ -23,8 +23,9 @@ import img20 from '../../assets/28-Thinking.png'
 const images = [
   img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13, img14, img15, img16, img17, img18, img19, img20,
 ]
-import { motion } from 'framer-motion'
+import { motion, transform } from 'framer-motion'
 import StarBackground from './StarBackground'
+import { transition } from 'three/examples/jsm/tsl/display/TransitionNode.js'
 
 const container = {
   hidden: {},
@@ -50,6 +51,7 @@ const Hero = ({ onHoverEnter, onHoverLeave }) => {
     }, 500);
     return () => clearInterval(interval);
   }, []);
+
   return (
     <>
     <motion.section className='hero' variants={container} initial="hidden" animate="visible" style={{ position: 'relative' }}>

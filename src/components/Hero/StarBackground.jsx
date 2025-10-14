@@ -2,13 +2,22 @@ import React, { useRef, useEffect } from 'react'
 
 export default function StarBackground({
   particleCount = 60,
-  color = '255,255,255', // rgb components used with alpha
+  color = '255,255,255', // rgb components used with alpha for stars
   maxSize = 3,
   speed = 0.3,
+  // new visual customization props
+  gradientTop = '#38366b',
+  gradientBottom = '#0f1117',
+  noiseIntensity = 0.18, // global alpha applied to the tiled noise (0-1)
+  noisePixelMin = 10, // minimum per-pixel alpha used when generating noise (0-255)
+  noisePixelMax = 80, // maximum per-pixel alpha used when generating noise (0-255)
+  noiseTileMultiplier = 1, // scales the noise tile size (higher = larger grain)
 }) {
   const canvasRef = useRef(null)
   const rafRef = useRef(null)
   const particlesRef = useRef([])
+  const noiseCanvasRef = useRef(null)
+  const noiseOffsetRef = useRef({ x: 0, y: 0 })
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -18,6 +27,29 @@ export default function StarBackground({
 
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
+    const createNoiseCanvas = (w, h) => {
+      // create a small noise canvas to be tiled for performance
+      const base = 256
+      const size = Math.max(64, Math.round(base * Math.max(1, Math.round(dpr)) * Math.max(0.25, noiseTileMultiplier)))
+      const nCanvas = document.createElement('canvas')
+      nCanvas.width = size
+      nCanvas.height = size
+      const nCtx = nCanvas.getContext('2d')
+
+      const img = nCtx.createImageData(nCanvas.width, nCanvas.height)
+      const data = img.data
+      // fill with white pixels and random alpha to form grain
+      for (let i = 0; i < data.length; i += 4) {
+        data[i] = 255
+        data[i + 1] = 255
+        data[i + 2] = 255
+        // alpha small and varied based on props
+        data[i + 3] = Math.floor(noisePixelMin + Math.random() * (noisePixelMax - noisePixelMin))
+      }
+      nCtx.putImageData(img, 0, 0)
+      return nCanvas
+    }
+
     const resize = () => {
       dpr = Math.max(1, window.devicePixelRatio || 1)
       const rect = canvas.getBoundingClientRect()
@@ -26,6 +58,8 @@ export default function StarBackground({
       canvas.style.width = rect.width + 'px'
       canvas.style.height = rect.height + 'px'
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
+      // recreate noise canvas when size changes (keeps noise quality consistent)
+      noiseCanvasRef.current = createNoiseCanvas(rect.width, rect.height)
     }
 
     const createParticles = () => {
@@ -43,8 +77,43 @@ export default function StarBackground({
 
     const draw = (time) => {
       const rect = canvas.getBoundingClientRect()
-      ctx.clearRect(0, 0, rect.width, rect.height)
+      // draw gradient background using configurable colors
+      const grad = ctx.createLinearGradient(0, 0, 0, rect.height)
+      grad.addColorStop(0, gradientTop)
+      grad.addColorStop(1, gradientBottom)
+      ctx.fillStyle = grad
+      ctx.fillRect(0, 0, rect.width, rect.height)
 
+      // draw grain/noise as a repeating pattern
+      if (noiseCanvasRef.current) {
+        ctx.save()
+        // subtle movement of noise for life (very slow)
+        if (!prefersReduced) {
+          noiseOffsetRef.current.x = (noiseOffsetRef.current.x + 0.3) % noiseCanvasRef.current.width
+          noiseOffsetRef.current.y = (noiseOffsetRef.current.y + 0.12) % noiseCanvasRef.current.height
+          // tile draw with offset to create smooth movement
+          const nx = -noiseOffsetRef.current.x
+          const ny = -noiseOffsetRef.current.y
+          ctx.globalAlpha = noiseIntensity
+          // draw tiled noise across canvas with integer steps to cover
+          const nW = noiseCanvasRef.current.width
+          const nH = noiseCanvasRef.current.height
+          for (let ix = nx; ix < rect.width; ix += nW) {
+            for (let iy = ny; iy < rect.height; iy += nH) {
+              ctx.drawImage(noiseCanvasRef.current, ix, iy, nW, nH)
+            }
+          }
+          ctx.globalAlpha = 1
+        } else {
+          // static single draw for reduced motion
+          ctx.globalAlpha = noiseIntensity
+          ctx.drawImage(noiseCanvasRef.current, 0, 0, rect.width, rect.height)
+          ctx.globalAlpha = 1
+        }
+        ctx.restore()
+      }
+
+      // Draw particles (stars)
       const parts = particlesRef.current
       for (let i = 0; i < parts.length; i++) {
         const p = parts[i]
@@ -92,7 +161,7 @@ export default function StarBackground({
       window.removeEventListener('resize', onResize)
       if (rafRef.current) cancelAnimationFrame(rafRef.current)
     }
-  }, [particleCount, color, maxSize, speed])
+  }, [particleCount, color, maxSize, speed, gradientTop, gradientBottom, noiseIntensity, noisePixelMin, noisePixelMax, noiseTileMultiplier])
 
   return (
     <canvas
