@@ -1,0 +1,46 @@
+.sidenav {
+  position: fixed;
+  top: 50%;
+  left: 32px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  z-index: 1200;
+}
+
+.sidenav-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.18);
+  border: 2px solid rgba(123,118,255,0.18);
+  transition: background 0.2s, border 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(2,6,23,0.10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidenav-dot.active {
+  background: #7b76ff;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 4px rgba(123,118,255,0.18);
+}
+
+.sidenav-dot:hover {
+  background: #fff;
+  border: 2px solid #7b76ff;
+}
+
+@media (max-width: 700px) {
+  .sidenav {
+    left: 10px;
+    gap: 16px;
+  }
+  .sidenav-dot {
+    width: 12px;
+    height: 12px;
+  }
+}

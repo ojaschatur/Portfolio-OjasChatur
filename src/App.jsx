@@ -4,6 +4,8 @@ import Navbar from './components/navbar/Navbar'
 import Hero from './components/Hero/Hero'
 import About from "./components/AboutMe/About"
 import { motion, useMotionValue, useSpring } from 'framer-motion'
+import SideNav from './components/SideNav/SideNav';
+import Experience from './components/Experience/Experience'
 
 function App() {
 
@@ -55,16 +57,23 @@ function App() {
         variants={variants}
         animate={cursorVariant}
       />
+      <SideNav />
       <header>
         <Navbar />
       </header>
       <main>
-        <Hero onHoverEnter={textEnter} onHoverLeave={textLeave} />
-        <About onHoverEnter={textEnter} onHoverLeave={textLeave} />
-        <section>Project1</section>
-        <section>Project2</section>
-        <section>Project3</section>
-        <section>Contact</section>
+        <section id="hero">
+          <Hero onHoverEnter={textEnter} onHoverLeave={textLeave} />
+        </section>
+        <section id="about">
+          <About onHoverEnter={textEnter} onHoverLeave={textLeave} />
+        </section>
+        <section id="experience">
+          <Experience onHoverEnter={textEnter} onHoverLeave={textLeave} />
+        </section>
+        <section id="project2">Project2</section>
+        <section id="project3">Project3</section>
+        <section id="contact">Contact</section>
       </main>
     </>
   )

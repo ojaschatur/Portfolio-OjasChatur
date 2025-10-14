@@ -1,0 +1,40 @@
+.experience {
+    min-height: 100vh;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    padding: 2rem;
+    gap: 2rem;
+    position: relative;
+    z-index: 10;
+}
+
+.exp-content {
+    text-align: center;
+    max-width: 800px;
+}
+
+.exp-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.exp-content ul {
+    text-align: left;
+    list-style-type: disc;
+    margin-left: 2rem;
+}
+
+.exp-content li {
+    margin-bottom: 0.5rem;
+}
+
+.exp-img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+}
