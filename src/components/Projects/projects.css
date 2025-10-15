@@ -1,0 +1,331 @@
+.projects {
+    min-height: 100vh;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    position: relative;
+    z-index: 10;
+    padding: 2rem;
+    overflow-x: hidden;
+}
+
+.projects, .projects *, .projects *:hover, .projects *:focus, .projects *:active {
+    cursor: none !important;
+}
+
+.projects-title {
+    font-size: 5rem;
+    font-weight: bold;
+    color: #7b76ff;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.projects-carousel {
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.carousel-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    z-index: 10;
+}
+
+.carousel-btn:hover:not(:disabled) {
+    background: rgba(123, 118, 255, 0.3);
+    transform: scale(1.1);
+}
+
+.carousel-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.projects-container {
+    flex: 1;
+    overflow: hidden;
+    border-radius: 20px;
+    width: 1224px; /* 3 cards (3*400px) + 2 gaps (2*12px for gap=2rem) */
+    max-width: 1224px;
+}
+
+.projects-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    gap: 2rem;
+    width: fit-content;
+}
+
+.project-card {
+    flex: 0 0 400px;
+    width: 400px;
+    height: 480px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(123, 118, 255, 0.5);
+    box-shadow: 0 20px 40px rgba(123, 118, 255, 0.1);
+}
+
+.project-image-container {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.project-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-image {
+    transform: scale(1.1);
+}
+
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.project-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: rgba(123, 118, 255, 0.8);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.project-link:hover {
+    background: rgba(123, 118, 255, 1);
+    transform: translateY(-2px);
+}
+
+.project-content {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #7b76ff;
+    margin: 0 0 1rem 0;
+}
+
+.project-tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.tech-badge {
+    background: rgba(123, 118, 255, 0.2);
+    color: #7b76ff;
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid rgba(123, 118, 255, 0.3);
+}
+
+.project-description {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin: 0;
+    flex: 1;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+
+
+.carousel-indicators {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    justify-content: center; /* Center dots below carousel */
+    width: 100%;
+    padding-bottom: 1rem;
+    margin-top: 1.5rem;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.indicator.active {
+    background: #7b76ff;
+    transform: scale(1.2);
+}
+
+.indicator:hover {
+    background: rgba(123, 118, 255, 0.7);
+}
+
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .project-card {
+        flex: 0 0 350px;
+        width: 350px;
+        height: 460px;
+    }
+    
+    .projects-container {
+        width: 1074px; /* 3*350px + 2*12px */
+        max-width: 1074px;
+    }
+    
+    .projects-carousel {
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .project-card {
+        flex: 0 0 320px;
+        width: 320px;
+        height: 420px;
+    }
+    .projects-container {
+        width: 320px;
+        max-width: 320px;
+    }
+}
+
+@media (max-width: 768px) {
+    .projects-title {
+        font-size: 3rem;
+    }
+    
+    .project-card {
+        flex: 0 0 320px;
+        width: 320px;
+        height: 420px;
+    }
+    
+    .projects-container {
+        width: calc(1 * 320px);
+    }
+    
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .projects-carousel {
+        gap: 0.5rem;
+    }
+    
+    .project-content {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .projects-title {
+        font-size: 2.5rem;
+    }
+    
+    .project-card {
+        flex: 0 0 280px;
+        width: 280px;
+        height: 400px;
+    }
+    
+    .projects-container {
+        width: calc(1 * 280px);
+    }
+    
+    .project-links {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .project-link {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 320px) {
+    .project-card {
+        flex: 0 0 260px;
+        width: 260px;
+        height: 380px;
+    }
+    
+    .projects-container {
+        width: calc(1 * 260px);
+    }
+}

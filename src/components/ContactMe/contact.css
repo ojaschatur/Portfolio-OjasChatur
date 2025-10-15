@@ -1,0 +1,208 @@
+/* Contact Section Glassmorphism (from experience.css) */
+.contact-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 6rem 1.5rem 2rem 1.5rem;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.contact-section.no-bg {
+    background: none !important;
+}
+
+.contact-section, .contact-section *, .contact-section *:hover, .contact-section *:focus, .contact-section *:active {
+    cursor: none !important;
+}
+
+.contact-glass-wrapper {
+    display: flex;
+    width: 100%;
+    max-width: 900px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(123,118,255,0.15), inset 0 1px 0 rgba(255,255,255,0.1);
+    padding: 2.5rem;
+    gap: 2.5rem;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.contact-glass-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0));
+    mix-blend-mode: overlay;
+    border-radius: 24px;
+}
+
+.contact-left {
+    flex: 1.3;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 2.5rem;
+}
+
+.lets-talk-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #7b76ff;
+    margin-bottom: 1.2rem;
+    letter-spacing: 0.02em;
+    cursor: default !important;
+    transition: none;
+}
+
+.contact-email {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.email-input {
+    font-size: 1.15rem;
+    padding: 0.85rem 1.25rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.09);
+    color: #fff;
+    width: 100%;
+    font-weight: 500;
+    outline: none;
+    transition: border 0.2s;
+    cursor: default !important;
+}
+
+.copy-btn {
+    width: 30%;
+    padding: 0.85rem 1.25rem;
+    border-radius: 12px;
+    background: #7b76ff;
+    color: #fff;
+    font-weight: 600;
+    border: 2px solid #7b76ff;
+    cursor: default !important;
+    transition: background 0.2s, color 0.2s, border 0.2s;
+    box-shadow: 0 2px 8px rgba(123,118,255,0.07);
+    font-size: 1.15rem;
+}
+
+.copy-btn:hover {
+    background: transparent;
+    color: #7b76ff;
+    border: 2px solid #7b76ff;
+}
+
+.contact-right {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+    padding: 0;
+}
+
+.contact-form input,
+.contact-form textarea {
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 12px;
+    padding: 0.95rem 1.3rem;
+    color: #fff;
+    font-size: 1.09rem;
+    font-weight: 500;
+    outline: none;
+    transition: border 0.2s;
+    resize: none;
+    cursor: default !important;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border: 1.2px solid #7b76ff;
+    background: rgba(123,118,255,0.06);
+}
+
+.send-btn {
+    align-self: flex-end;
+    padding: 0.7rem 2.2rem;
+    border-radius: 10px;
+    font-size: 1.17rem;
+    font-weight: bold;
+    color: #fff;
+    background: #7b76ff;
+    border: 2px solid #7b76ff;
+    cursor: default !important;
+    transition: background 0.2s, color 0.2s, border 0.2s;
+    box-shadow: 0 2px 8px rgba(123,118,255,0.07);
+}
+
+.send-btn:hover {
+    background: transparent;
+    color: #7b76ff;
+    border: 2px solid #7b76ff;
+}
+
+.success-msg {
+    color: #7bff99;
+    margin-top: 0.8rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+
+.thank-you-big {
+    font-size: 13vw;
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 2px #7b76ff;
+    letter-spacing: 0.15em;
+    white-space: nowrap;
+    position: relative;
+    text-align: center;
+    user-select: none;
+    cursor: none !important;
+    margin: -3rem;
+}
+
+.copied-msg {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-weight: 600;
+    color: #7b76ff;
+    font-size: 1.15rem;
+    letter-spacing: 0.05em;
+}
+
+@media (max-width: 900px) {
+    .contact-glass-wrapper {
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 1.3rem;
+    }
+    .thank-you-container {
+        width: 100%;
+        height: 80px;
+    }
+    .thank-you-big {
+        font-size: 12vw;
+    }
+}

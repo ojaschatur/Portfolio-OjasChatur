@@ -5,8 +5,7 @@ const sections = [
   { id: 'hero', label: 'Hero' },
   { id: 'about', label: 'About' },
   { id: 'experience', label: 'Experience' },
-  { id: 'project2', label: 'Project2' },
-  { id: 'project3', label: 'Project3' },
+  { id: 'projects', label: 'Projects' },
   { id: 'contact', label: 'Contact' },
 ];
 

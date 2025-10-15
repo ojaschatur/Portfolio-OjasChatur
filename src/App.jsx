@@ -6,6 +6,8 @@ import About from "./components/AboutMe/About"
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 import SideNav from './components/SideNav/SideNav';
 import Experience from './components/Experience/Experience'
+import Projects from './components/Projects/Projects'
+import Contact from './components/ContactMe/Contact'
 
 function App() {
 
@@ -71,9 +73,12 @@ function App() {
         <section id="experience">
           <Experience onHoverEnter={textEnter} onHoverLeave={textLeave} />
         </section>
-        <section id="project2">Project2</section>
-        <section id="project3">Project3</section>
-        <section id="contact">Contact</section>
+        <section id="projects">
+          <Projects onHoverEnter={textEnter} onHoverLeave={textLeave} />
+        </section>
+        <section id="contact">
+          <Contact onHoverEnter={textEnter} onHoverLeave={textLeave} />
+        </section>
       </main>
     </>
   )
