@@ -30,9 +30,14 @@ const rightExp = {
   techStack: 'GCP, Python, GitLab'
 }
 
-const expVariant = {
-  hidden: { opacity: 0, y: 60 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, type: 'spring' } }
+const expVariantLeft = {
+  hidden: { opacity: 0, x: -100 },
+  visible: { opacity: 1, x: 0, transition: { duration: 1.2, type: 'spring', bounce: 0.4 } }
+}
+
+const expVariantRight = {
+  hidden: { opacity: 0, x: 100 },
+  visible: { opacity: 1, x: 0, transition: { duration: 1.2, type: 'spring', bounce: 0.4, delay: 0.3 } }
 }
 
 const Experience = ({ onHoverEnter, onHoverLeave }) => {
@@ -53,23 +58,21 @@ const Experience = ({ onHoverEnter, onHoverLeave }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  
-
   return (
     <motion.div
       className='experience'
       initial={{ opacity: 0 }}
       animate={{ opacity: visible ? 1 : 0 }}
-      transition={{ duration: 0.5, delay: visible ? 0.18 : 0 }}
+      transition={{ duration: 0.5, delay: visible ? 0.2 : 0 }}
     >
       <motion.h1 className='experience-title' onMouseEnter={onHoverEnter} onMouseLeave={onHoverLeave}>Experience</motion.h1>
       <div className="exp-timeline">
         <motion.div
           className="exp-card left"
-          variants={expVariant}
+          variants={expVariantLeft}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
+          viewport={{ amount: 0.3 }}
           style={{ marginRight: '2.5rem' }}
         >
           <div className="exp-card-header">
@@ -85,10 +88,10 @@ const Experience = ({ onHoverEnter, onHoverLeave }) => {
         <div className="center-line"></div>
         <motion.div
           className="exp-card right"
-          variants={expVariant}
+          variants={expVariantRight}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
+          viewport={{ amount: 0.3 }}
           style={{ marginLeft: '2.5rem' }}
         >
           <div className="exp-card-header">

@@ -10,6 +10,8 @@
 html {
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
+
+  scrollbar-color: #7b76ff rgba(255, 255, 255, 0.1);
 }
 
 section {
@@ -42,6 +44,25 @@ body {
 
 a, button, input, textarea, select, label, summary, svg, [role~="button"], [role~="link"] {
   cursor: none !important;
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #7b76ff;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9d99ff;
 }
 
 /* .course {
