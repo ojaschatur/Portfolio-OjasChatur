@@ -25,7 +25,7 @@ const Projects = ({ onHoverEnter, onHoverLeave }) => {
   // Only allow scrolling to the last fully visible set
   const maxIndex = Math.max(0, projects.length - itemsPerView)
 
-  const nextSlide = () => setCurrentIndex(prev => (prev < maxIndex ? prev + 1 : prev))
+  const nextSlide = () => setCurrentIndex(prev => (prev < maxIndex - 1 ? prev + 1 : prev))
   const prevSlide = () => setCurrentIndex(prev => (prev > 0 ? prev - 1 : 0))
 
   const cardVariants = {
@@ -151,7 +151,7 @@ const Projects = ({ onHoverEnter, onHoverLeave }) => {
         <button 
           className="carousel-btn next-btn" 
           onClick={nextSlide}
-          disabled={currentIndex >= maxIndex}
+          disabled={currentIndex >= maxIndex - 1}
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
             <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/>
@@ -160,7 +160,7 @@ const Projects = ({ onHoverEnter, onHoverLeave }) => {
       </div>
 
       <div className="carousel-indicators">
-        {Array.from({ length: maxIndex + 1 }).map((_, index) => (
+        {Array.from({ length: maxIndex }).map((_, index) => (
           <button
             key={index}
             className={`indicator ${currentIndex === index ? 'active' : ''}`}
