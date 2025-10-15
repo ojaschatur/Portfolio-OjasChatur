@@ -7,34 +7,162 @@
     justify-content: center;
     color: white;
     font-size: 1.5rem;
-    padding: 2rem;
-    gap: 2rem;
     position: relative;
     z-index: 10;
 }
 
-.exp-content {
-    text-align: center;
-    max-width: 800px;
-}
-
-.exp-content h1 {
-    font-size: 3rem;
+.experience-title {
+    font-size: 5rem;
+    font-weight: bold;
+    color: #7b76ff;
+    margin-top: 4rem;
     margin-bottom: 1rem;
 }
 
-.exp-content ul {
-    text-align: left;
-    list-style-type: disc;
-    margin-left: 2rem;
+.exp-timeline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+    position: relative;
+    gap: 0;
+    margin-top: 0;
 }
 
-.exp-content li {
+.center-line {
+    background-color: white;
+    width: 4px;
+    height: 530px;
+    margin-top: 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.exp-card {
+    width: 45%;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 2;
+}
+
+.exp-card.left {
+    margin-right: 2.5rem;
+    margin-left: 0;
+    text-align: left;
+    margin-top: -5rem;
+}
+
+.exp-card.right {
+    margin-left: 2.5rem;
+    margin-right: 0;
+    text-align: left;
+    margin-top: 4rem;
+}
+
+.exp-connector {
+    position: absolute;
+    top: 48px;
+    width: 40px;
+    height: 2px;
+    background: #7b76ff;
+    z-index: 2;
+}
+
+
+.exp-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
     margin-bottom: 0.5rem;
 }
 
-.exp-img {
-    width: 200px;
-    height: 200px;
-    object-fit: contain;
+.exp-card-header h2 {
+    font-size: 1.5rem;
+    color: #7b76ff;
+    margin: 0;
+}
+
+.exp-card-header .exp-techstack {
+    font-size: 1rem;
+    color: #fff;
+    background: #7b76ff;
+    border-radius: 8px;
+    padding: 0.2em 0.8em;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.exp-date {
+    font-size: 1rem;
+    color: #aaa;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.exp-company {
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.exp-location {
+    font-weight: normal;
+    color: #ccc;
+}
+
+.exp-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.exp-card li {
+    margin-bottom: 0.5rem;
+    font-size: 1.15rem;
+    line-height: 1.4;
+    position: relative;
+    padding-left: 1rem;
+}
+
+.exp-card li::before {
+    content: '•';
+    color: #7b76ff;
+    position: absolute;
+    left: 0;
+}
+
+.exp-card.left li {
+    padding-left: 1rem;
+    padding-right: 0;
+    text-align: left;
+}
+
+.exp-card.left li::before {
+    left: 0;
+    right: auto;
+}
+
+.exp-card.right li {
+    padding-left: 1rem;
+    padding-right: 0;
+    text-align: left;
+}
+
+.exp-card.right li::before {
+    left: 0;
+    right: auto;
+}
+
+.exp-techstack {
+    margin: 0.5rem 0 1rem 0;
+    font-size: 1rem;
+    color: #7b76ff;
+    font-weight: 500;
 }
